@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Invoice | Aphotech Solar Solution</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="invoice.css">
+
+  <!-- SUPABASE + LOGIN PROTECTION -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../assets/js/auth-guard.js"></script>
+</head>
+<body>
+
+<div class="invoice-container">
+
+  <header>
+    <h1>Aphotech Solar-Solution Enterprises</h1>
+    <p><strong>Bank:</strong> Moniepoint MFB</p>
+    <p><strong>Account No:</strong> 6531397045</p>
+    <hr>
+  </header>
+
+  <section class="invoice-info">
+    <p><strong>Invoice No:</strong> <span id="invoiceNo"></span></p>
+    <p><strong>Date:</strong> <span id="invoiceDate"></span></p>
+  </section>
+
+  <section class="customer-input">
+    <h3>Customer Details</h3>
+    <input type="text" id="customerName" placeholder="Full Name" required>
+    <input type="tel" id="customerPhone" placeholder="Phone Number" required>
+    <input type="email" id="customerEmail" placeholder="Email (optional)">
+  </section>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Package</th>
+        <th>Amount (₦)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td id="packageName"></td>
+        <td id="packageAmount"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="total">Total: ₦<span id="totalAmount"></span></h3>
+
+  <section class="terms">
+    <h4>Terms & Conditions</h4>
+    <ul>
+      <li>Payment confirms acceptance of this invoice.</li>
+      <li>Installation timeline starts after full payment.</li>
+      <li>Prices are valid for 7 days.</li>
+      <li>No refund after installation begins.</li>
+    </ul>
+  </section>
+
+  <div class="actions">
+  <button onclick="sendWhatsAppInvoice()">Send via WhatsApp</button>
+      <button onclick="printInvoice()">Print Invoice</button>
+      <button disabled>Paystack/online payment(Coming Soon)</button>
+  </div>
+
+</div>
+
+<script src="invoice.js"></script>
+</body>
+</html>

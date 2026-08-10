@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Invoice History</title>
+  <link rel="stylesheet" href="invoice.css">
+
+  <!-- SUPABASE + LOGIN PROTECTION -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../assets/js/auth-guard.js"></script>
+</head>
+<body>
+
+<div class="invoice-container">
+  <h2>Invoice History</h2>
+  <div id="history"></div>
+</div>
+
+<script>
+  const historyDiv = document.getElementById("history");
+  const invoices = JSON.parse(localStorage.getItem("invoices")) || [];
+
+  if (invoices.length === 0) {
+    historyDiv.innerHTML = "<p>No invoices yet.</p>";
+  } else {
+    invoices.forEach(inv => {
+      historyDiv.innerHTML += `
+        <div class="history-card">
+          <p><strong>${inv.invoiceNo}</strong></p>
+          <p>${inv.name} - ₦${inv.amount}</p>
+        </div>
+      `;
+    });
+  }
+</script>
+</body>
+</html>
